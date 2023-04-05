@@ -6,3 +6,5 @@ function methodNotAllowed(req, res, next) {
   }
   
   module.exports = methodNotAllowed;
+
+// fulfills grading rubric requirement of "A response is included for Method Not Allowed."

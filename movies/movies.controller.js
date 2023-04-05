@@ -1,6 +1,7 @@
 const service = require("./movies.service.js");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 
+// check whether specific movie exists, if not respond with 404
 async function movieExists (req, res, next) {
   const {movieId} = req.params;
   const movie = await service.read(movieId);
@@ -14,15 +15,17 @@ async function movieExists (req, res, next) {
   })
 }
 
+// read part of CRUD using movieId
 async function read (req, res) {
   const {movieId} = req.params;
   const data = await service.read(movieId);
   res.json({data})
 }
 
+// list the movies that are showing, checking if showing = true or false
 async function list(req, res, next) {
   const showing = req.query.is_showing
-  const data = showing ? await service.showingList(): await service.list();
+  const data = showing ? await service.showingList() : await service.list();
   res.json({data})
 }
 
@@ -36,12 +39,12 @@ async function movieByTheaters(req, res, next) {
   res.json({ data });
 }
 
+// get the reviews for a specific movie and add info about the corresponding critic
 async function movieByReviewAndCritic(req, res, next) {
   const time = new Date().toISOString();
   const { movieId } = req.params;
   const reviews = await service.movieByReview(movieId);
   const critics = await service.listCritics();
-
   const data = reviews.map((review) => {
     const critic = {
       critic: critics.find((critic) => critic.critic_id === review.critic_id),

@@ -1,10 +1,12 @@
 const knex = require("../src/db/connection");
 const mapProperties = require("../src/utils/map-properties");
 
+// list all the movies
 function list() {
   return knex("movies").select("*");
 }
 
+// list all the movies that are showing
 function showingList() {
   return knex("movies as m")
     .join("movies_theaters as mt", "m.movie_id", "mt.movie_id")
@@ -18,6 +20,7 @@ function read(movie_id){
     .where({movie_id})
     .first()
 }
+
 function movieByTheaters(movieId) {
   return knex("theaters as t")
     .join("movies_theaters as mt", "t.theater_id", "mt.theater_id")
@@ -25,6 +28,7 @@ function movieByTheaters(movieId) {
     .where({ "mt.movie_id": movieId });
 }
 
+// list all the critics
 function listCritics () {
     return knex("critics")
     .select("*")
