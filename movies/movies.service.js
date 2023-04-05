@@ -1,5 +1,5 @@
-const knex = require("../db/connection");
-const mapProperties = require("../utils/map-properties");
+const knex = require("../src/db/connection");
+const mapProperties = require("../src/utils/map-properties");
 
 function list() {
   return knex("movies").select("*");

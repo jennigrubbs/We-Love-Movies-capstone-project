@@ -1,6 +1,6 @@
 const service = require("./reviews.service.js");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
-const mapProperties = require("../utils/map-properties");
+const mapProperties = require("../src/utils/map-properties");
 
 async function reviewExists(req, res, next) {
 //   console.log(req.params, '--------------------------')
