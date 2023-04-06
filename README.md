@@ -4,3 +4,5 @@ The goal of this project is to create a backend for WeLoveMovies, a startup. It 
 
 For running this project locally in development, use npm start.
 For running this project in a production environment, use npm start:prod.
+
+The link to the deployed backend server for the /movies path is: https://jenni-grubbs-we-love-movies-capstone.onrender.com/movies
